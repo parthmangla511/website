@@ -1,0 +1,28 @@
+.gallery{
+    background-color: #0b1120;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.gallery-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+.gallery-item img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.gallery-item{
+    flex: 0 0 auto;
+    width: 280px;
+}
