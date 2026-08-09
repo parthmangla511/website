@@ -6,24 +6,23 @@ import Timeline from './components/timeline';
 import Card from './components/card';
 import Fame from './components/fame';
 import Gallery from './components/gallery';
+import Footer from './components/footer';
+import InteractiveBackground from './components/InteractiveBackground';
 
 function App() {
   return (
     <div className="app-shell">
+      <InteractiveBackground />
       <Navbar />
-      <Hero />
-      <Achievement />
-      <Timeline />
-      <Card />
-      <Fame />
-      <Gallery />
-      <footer>
-<div>
-End with a motivational section that encourages users to take action and make a positive impact in their lives.
-<br />
-[Join Geek Room]
-</div>
-</footer>
+      <main>
+        <Hero />
+        <Achievement />
+        <Timeline />
+        <Card />
+        <Fame />
+        <Gallery />
+      </main>
+      <Footer />
     </div>
   );
 }
