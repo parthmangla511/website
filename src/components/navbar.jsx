@@ -16,7 +16,7 @@ function Navbar() {
         <li className="item">
           <a>Events</a>
         </li>
-        <li className="item">
+        <li className="item active">
           <a>Achievements</a>
         </li>
         <li className="item">
