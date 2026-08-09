@@ -1,8 +1,9 @@
 .fame{
-    background-color: rgba(6, 10, 24, 0.85);
+    background: rgba(13, 17, 28, 0.85);
     color: white;
     text-align: center;
     padding: 40px 20px;
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .fame-container{
@@ -14,10 +15,13 @@
 }
 
 .fame-box{
-    border: 2px solid #4f46e5;
+    border: 1px solid rgba(255, 107, 0, 0.35);
     padding: 24px;
     min-width: 220px;
     flex: 1 1 240px;
+    background: rgba(13, 17, 28, 0.72);
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.22);
 }
 
 .fame-box h2,
