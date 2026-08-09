@@ -1,8 +1,9 @@
 .gallery{
-    background-color: #0b1120;
+    background: rgba(13, 17, 28, 0.92);
     color: white;
     text-align: center;
     padding: 40px 20px;
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .gallery-container{
