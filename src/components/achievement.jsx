@@ -1,7 +1,31 @@
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import "../css/achievement.css";
 
 function Achievement() {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch("/api/achievements");
+        if (!res.ok) {
+          throw new Error("Unable to load achievement data from the server.");
+        }
+        const data = await res.json();
+        setItems(Array.isArray(data) ? data : []);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Unable to load achievements.";
+        setError(message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
   return (
     <section id="achievements" className="achievement">
       <div className="achievement__backdrop" aria-hidden="true">
@@ -28,23 +52,19 @@ function Achievement() {
         </div>
 
         <div className="achievement__cards-grid">
-          <article className="achievement-card accent-left orange">
-            <span className="achievement-card__pill">NATIONAL HACKATHON</span>
-            <h3>1st Winner - SIH 2025</h3>
-            <p>Team Geek Room bagged 1st prize at Smart India Hackathon Grand Finale under the Ministry of Education track with ₹1,00,000 cash reward.</p>
-          </article>
-
-          <article className="achievement-card accent-left cyan">
-            <span className="achievement-card__pill">GLOBAL IMPACT</span>
-            <h3>Google Solution Challenge Top 100</h3>
-            <p>Selected among top global teams for building an AI-powered accessible healthcare platform for rural communities.</p>
-          </article>
-
-          <article className="achievement-card accent-right orange">
-            <span className="achievement-card__pill">OPEN SOURCE</span>
-            <h3>120+ Hacktoberfest PRs Merged</h3>
-            <p>Our community members successfully contributed to major open-source projects including Kubernetes, Appwrite, and Vercel tools.</p>
-          </article>
+          {loading && <p>Loading achievements...</p>}
+          {error && <p className="error">Failed to load: {error}</p>}
+          {!loading && !error && items.length === 0 && (
+            <p>No achievements found.</p>
+          )}
+          {!loading && !error && items.map((a) => (
+            <article key={a._id} className="achievement-card accent-left orange">
+              <span className="achievement-card__pill">{a.tagname || 'ACHIEVEMENT'}</span>
+              <h3>{a.winnerName}</h3>
+              <h3>{a.title}</h3>
+              <p>{a.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
