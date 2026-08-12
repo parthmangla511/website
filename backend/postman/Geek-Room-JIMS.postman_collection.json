@@ -1,0 +1,49 @@
+{
+  "info": {
+    "_postman_id": "d8a7ce44-2aa7-4f10-81d2-99c371cb0a5d",
+    "name": "Geek Room JIMS Backend",
+    "description": "Contact Us form workflow: Postman -> POST /api/contact -> validation -> Brevo -> organization inbox.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Contact Us - Send message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Parth Mangla\",\n  \"email\": \"parth@example.com\",\n  \"role\": \"Student\",\n  \"message\": \"I would like to collaborate with Geek Room JIMS.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api/contact"
+      },
+      "response": []
+    },
+    {
+      "name": "Achievements - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/achievements"
+      }
+    }
+  ]
+}
