@@ -1,0 +1,219 @@
+.monthly-highlights {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.monthly-highlights__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.monthly-highlights__eyebrow {
+  margin: 0 0 0.5rem;
+  color: #00F0FF;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.monthly-highlights__header h3 {
+  margin: 0;
+  color: #F8FAFC;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    #0066FF 48%,
+    #00F0FF 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.monthly-highlights__intro {
+  max-width: 520px;
+  margin: 0;
+  color: #94A3B8;
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+.monthly-highlights__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.monthly-highlight-card {
+  position: relative;
+  min-height: 235px;
+  padding: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  background: rgba(13, 17, 28, 0.72);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.monthly-highlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+}
+
+.monthly-highlight-card.orange::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #FF6B00,
+    #FF3D00,
+    transparent
+  );
+}
+
+.monthly-highlight-card.cyan::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #0066FF,
+    #00F0FF,
+    transparent
+  );
+}
+
+.monthly-highlight-card.orange:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 107, 0, 0.42);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.40),
+    0 0 24px rgba(255, 107, 0, 0.12);
+}
+
+.monthly-highlight-card.cyan:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.40);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.40),
+    0 0 24px rgba(0, 240, 255, 0.10);
+}
+
+.monthly-highlight-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+
+.monthly-highlight-card__month {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.monthly-highlight-card.orange .monthly-highlight-card__month {
+  color: #FF6B00;
+}
+
+.monthly-highlight-card.cyan .monthly-highlight-card__month {
+  color: #00F0FF;
+}
+
+.monthly-highlight-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.monthly-highlight-card.orange .monthly-highlight-card__dot {
+  background: #FF6B00;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.65);
+}
+
+.monthly-highlight-card.cyan .monthly-highlight-card__dot {
+  background: #00F0FF;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.60);
+}
+
+.monthly-highlight-card__label {
+  display: inline-flex;
+  margin-bottom: 0.9rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.monthly-highlight-card.orange .monthly-highlight-card__label {
+  color: #FF6B00;
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.28);
+}
+
+.monthly-highlight-card.cyan .monthly-highlight-card__label {
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.07);
+  border: 1px solid rgba(0, 240, 255, 0.26);
+}
+
+.monthly-highlight-card h4 {
+  margin: 0 0 0.65rem;
+  color: #F8FAFC;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.monthly-highlight-card p {
+  margin: 0;
+  color: #94A3B8;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .monthly-highlights__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .monthly-highlights__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .monthly-highlights__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monthly-highlight-card {
+    transition: none;
+  }
+}
