@@ -48,7 +48,6 @@ function Footer() {
             <h4>Navigation</h4>
             <a href="#home">Home</a>
             <a href="#why-join">Why Join</a>
-            <a href="#events">Events</a>
             <a href="#achievements">Achievements</a>
           </div>
 
@@ -56,7 +55,6 @@ function Footer() {
             <h4>Community</h4>
             <a href="#partners">Partners</a>
             <a href="#faq">FAQ</a>
-            <a href="#contact">Contact Us</a>
           </div>
         </div>
       </div>
