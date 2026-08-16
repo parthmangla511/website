@@ -1,30 +1,481 @@
-.card{
-    background: rgba(13, 17, 28, 0.75);
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 24px;
-    box-shadow: 0 22px 50px rgba(0,0,0,0.28);
-}
-h1{
-    color: white;
+.card {
+  width: min(1240px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 92px 0;
+  color: var(--text-main);
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 12% 14%,
+      rgba(255, 107, 0, 0.13),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(0, 240, 255, 0.10),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #07080D 0%,
+      #05060A 100%
+    );
 }
 
-.winners-container{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
+.card__header {
+  max-width: 850px;
+  margin: 0 auto 42px;
 }
 
-.winners{
-    border: 1px solid rgba(255, 107, 0, 0.35);
-    padding: 24px;
-    min-width: 220px;
-    flex: 1 1 240px;
-    background: rgba(13, 17, 28, 0.75);
-    border-radius: 24px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+.card__eyebrow {
+  display: inline-flex;
+  margin: 0 0 12px;
+  padding: 7px 14px;
+
+  border: 1px solid rgba(0, 240, 255, 0.30);
+  border-radius: 999px;
+
+  background: rgba(0, 240, 255, 0.07);
+  color: #00F0FF;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card__header h2 {
+  margin: 0;
+
+  color: #F8FAFC;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   CARD GRID
+   ============================================================ */
+
+.winners-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+
+  width: 100%;
+  margin-top: 42px;
+  align-items: start;
+}
+
+/* ============================================================
+   WINNER CARD
+   ============================================================ */
+
+.winners {
+  position: relative;
+  min-width: 0;
+  min-height: 360px;
+
+  overflow: visible;
+
+  background: rgba(13, 17, 28, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(18px) saturate(165%);
+  -webkit-backdrop-filter: blur(18px) saturate(165%);
+
+  text-align: left;
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+
+  z-index: 1;
+}
+
+.winners::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  border-radius: 20px 20px 0 0;
+}
+
+/* ============================================================
+   ORANGE CARD
+   ============================================================ */
+
+.winners--orange {
+  border-left: 3px solid #FF6B00;
+}
+
+.winners--orange::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #FF6B00,
+      #FF3D00,
+      transparent
+    );
+}
+
+/* ============================================================
+   CYAN CARD
+   ============================================================ */
+
+.winners--cyan {
+  border-left: 3px solid #00F0FF;
+}
+
+.winners--cyan::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #0066FF,
+      #00F0FF,
+      transparent
+    );
+}
+
+/* ============================================================
+   CARD MAIN CONTENT
+   ============================================================ */
+
+.winners__main {
+  padding: 22px 22px 0;
+}
+
+.winners__tag {
+  display: inline-flex;
+
+  margin-bottom: 12px;
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Orange tag */
+
+.winners--orange .winners__tag {
+  color: #FF6B00;
+
+  background: rgba(255, 107, 0, 0.08);
+
+  border: 1px solid rgba(255, 107, 0, 0.30);
+}
+
+/* Cyan tag */
+
+.winners--cyan .winners__tag {
+  color: #00F0FF;
+
+  background: rgba(0, 240, 255, 0.07);
+
+  border: 1px solid rgba(0, 240, 255, 0.28);
+}
+
+/* Event title */
+
+.winners h3 {
+  margin: 0;
+
+  color: #F8FAFC;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.winners__hover-hint {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  color: #64748B;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.60rem;
+  letter-spacing: 0.05em;
+
+  transition: opacity 0.2s ease;
+}
+
+/* ============================================================
+   WINNER IMAGE
+   ============================================================ */
+
+.winners__image-wrapper {
+  position: relative;
+
+  width: calc(100% - 32px);
+  height: 220px;
+
+  margin: 18px auto 20px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #0D111C;
+}
+
+.winners__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
+}
+
+/* Orange image border */
+
+.winners--orange .winners__image-wrapper {
+  border: 1px solid rgba(255, 107, 0, 0.20);
+}
+
+/* Cyan image border */
+
+.winners--cyan .winners__image-wrapper {
+  border: 1px solid rgba(0, 240, 255, 0.20);
+}
+
+/* Image dark gradient like Hall of Fame */
+
+.winners__image-wrapper::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(7, 8, 13, 0.78) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   HOVER
+   ============================================================ */
+
+.winners:hover {
+  transform: translateY(-6px);
+  z-index: 30;
+}
+
+.winners:hover .winners__image {
+  transform: scale(1.06);
+  filter: saturate(1.08);
+}
+
+.winners:hover .winners__hover-hint {
+  opacity: 0;
+}
+
+/* Orange hover */
+
+.winners--orange:hover {
+  border-color: rgba(255, 107, 0, 0.48);
+
+  box-shadow:
+    0 28px 58px rgba(0, 0, 0, 0.48),
+    0 0 28px rgba(255, 107, 0, 0.17);
+}
+
+/* Cyan hover */
+
+.winners--cyan:hover {
+  border-color: rgba(0, 240, 255, 0.44);
+
+  box-shadow:
+    0 28px 58px rgba(0, 0, 0, 0.48),
+    0 0 28px rgba(0, 240, 255, 0.13);
+}
+
+/* ============================================================
+   DETAILS PANEL
+   SAME AS HALL OF FAME
+   ============================================================ */
+
+.winners__details {
+  position: absolute;
+
+  left: 10px;
+  right: 10px;
+
+  top: calc(100% - 18px);
+
+  z-index: 40;
+
+  padding: 18px 20px;
+
+  background: rgba(13, 17, 28, 0.97);
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: none;
+
+  border-radius: 0 0 18px 18px;
+
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.48);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  opacity: 0;
+
+  transform:
+    translateY(-12px)
+    scale(0.98);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+/* Orange detail panel */
+
+.winners--orange .winners__details {
+  border-left: 2px solid #FF6B00;
+
+  border-right-color:
+    rgba(255, 107, 0, 0.24);
+
+  border-bottom-color:
+    rgba(255, 107, 0, 0.24);
+}
+
+/* Cyan detail panel */
+
+.winners--cyan .winners__details {
+  border-left: 2px solid #00F0FF;
+
+  border-right-color:
+    rgba(0, 240, 255, 0.22);
+
+  border-bottom-color:
+    rgba(0, 240, 255, 0.22);
+}
+
+.winners__details-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+}
+
+/* Orange label */
+
+.winners--orange .winners__details-label {
+  color: #FF6B00;
+}
+
+/* Cyan label */
+
+.winners--cyan .winners__details-label {
+  color: #00F0FF;
+}
+
+.winners__details h2 {
+  margin: 0 0 6px;
+
+  color: #F8FAFC;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+.winners__details p {
+  margin: 0;
+
+  color: #94A3B8;
+
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+/* Reveal panel on hover */
+
+.winners:hover .winners__details {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1050px) {
+  .winners-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 65px 0 45px;
+  }
+
+  .winners-container {
+    grid-template-columns: 1fr;
+  }
+
+  .winners {
+    min-height: 0;
+  }
+
+  .winners__image-wrapper {
+    height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winners,
+  .winners__image,
+  .winners__details {
+    transition: none;
+  }
 }
